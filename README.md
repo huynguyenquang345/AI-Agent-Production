@@ -1,36 +1,44 @@
-# 🤖 Technical Knowledge AI Agent (Production-Ready)
 
-[![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
-[![LangGraph](https://img.shields.io/badge/Agent-LangGraph-orange.svg)](https://www.langchain.com/langgraph)
-[![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688.svg)](https://fastapi.tiangolo.com/)
-[![Docker](https://img.shields.io/badge/Deployment-Docker-2496ED.svg)](https://www.docker.com/)
-[![Status](<https://img.shields.io/badge/Status-Live%20Production-brightgreen.svg>)]()
+# AI Task Management Assistant (Local Llama & Multi-Agent)
 
-> Hệ thống Trợ lý AI tra cứu tài liệu kỹ thuật tự động hóa quy trình (Agentic Workflow) sử dụng RAG nâng cao, đóng gói Microservices và đã vận hành thực tế trên Cloud
+Hệ thống Trợ lý Quản lý Công việc tự động hóa toàn diện dựa trên kiến trúc Multi-Agent, Advanced RAG và Local LLM (Ollama / Llama / Qwen), chạy hoàn toàn độc lập không phụ thuộc vào các API trả phí bên ngoài.
+
+## 📅 Lộ Trình Phát Triển 2 Tháng
+
+### Tháng 1: Xây Dựng Nền Tảng Knowledge & Dữ Liệu (Data & Knowledge Engine)
+
+- **Tuần 1-2:** Số hóa tài liệu quy trình, SOP công việc (PDF, Word, Markdown) sử dụng PyPDF / Unstructured, ứng dụng Recursive/Semantic Chunking và gắn Metadata quản lý theo phòng ban.
+- **Tuần 3-4:** Xây dựng Vector Database (Qdrant), cấu hình Hybrid Search kết hợp Sparse (BM25) và Dense Vector Search cùng thuật toán Reranking để tối ưu hóa truy xuất ngữ cảnh.
+
+### Tháng 2: Xây Dựng Kiến Trúc Agent & Lập Lịch Tự Động (Agent Core & Operations)
+
+- **Tuần 5-6:** Phát triển kiến trúc Agent chuẩn (Orchestrator - Planner - Executor) dùng **LangGraph** kết hợp mô hình cục bộ (`qwen2.5:3b`, `nomic-embed-text`) để phân loại ý định, lập kế hoạch và thao tác CSDL công việc.
+- **Tuần 7:** Tích hợp tính năng chủ động (Proactive Agent) quét công việc quá hạn định kỳ và gửi thông báo tự động.
+- **Tuần 8:** Tối ưu hóa hiệu suất, đánh giá chất lượng RAG và đóng gói ứng dụng hoàn chỉnh.
+
+## 🛠️ Công Nghệ Sử Dụng (Tech Stack)
+
+- **Framework Agent:** LangGraph (Orchestration & State Management)
+- **Vector Database:** Qdrant (In-memory / Persistent)
+- **LLM & Embeddings (Local):** Ollama (`qwen2.5:3b` cho Agent suy luận, `nomic-embed-text` cho embedding)
+- **Environment:** Python 3.11/3.12, Windows, PowerShell, VS Code
+
+## 🚀 Hướng Dẫn Cài Đặt & Chạy Nhanh (Quick Start)
 
 
-# AI Agent Production System
 
-Hệ thống Multi-Agent AI kết hợp Advanced RAG phục vụ cho việc tự động hóa tuyển dụng, phân tích hồ sơ ứng viên và hỗ trợ đánh giá kỹ thuật. Dự án được tối ưu hóa chạy hoàn toàn bằng local models để đảm bảo tính bảo mật và tối ưu chi phí.
+**Cài đặt các gói thư viện cần thiết:**
 
-## 🚀 Công nghệ sử dụng (Tech Stack)
+**Clone repository về máy (Hỗ trợ ổ E hoặc ổ C):**
 
-- **Language:** Python 3.11 / 3.12
-- **Orchestration:** LangGraph (StateGraph, Multi-Agent Collaboration, Tool Calling)
-- **RAG Framework:** LangChain, Qdrant Vector Store (In-memory / Persistent)
-- **Local LLM & Embeddings:** Ollama (`qwen2.5:3b` cho suy luận agent, `nomic-embed-text` cho embedding)
-- **Environment:** Windows, PowerShell, VS Code
+```bash
+git clone <URL_REPOSITORY>
+cd AI-Agent-Production
+```
 
-## 📂 Cấu trúc Thư mục Dự án
 
-- `week_1/`: Xây dựng pipeline Advanced RAG cơ bản và Agent đơn lẻ (Day 1 & Day 2).
-- `week_2/`: Xây dựng hệ thống Multi-Agent phân chia vai trò (HR Screener & Tech Interviewer) với Router điều hướng (Day 3 & Day 4).
-- `docs/`: Tài liệu thiết kế và giới thiệu chi tiết sản phẩm.
+**Bash**
 
-## 🛠️ Hướng Dẫn Cài Đặt & Chạy (Quick Start)
-
-1. **Clone repository:**
-   ```bash
-   git clone <URL_REPOSITORY_CUA_BAN>
-   AI-Agent-Production
-   ```
+```
+pip install langchain langchain-ollama langchain-qdrant langgraph pydantic pypdf
+```
