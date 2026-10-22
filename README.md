@@ -25,10 +25,6 @@ Hệ thống Trợ lý Quản lý Công việc tự động hóa toàn diện d�
 
 ## 🚀 Hướng Dẫn Cài Đặt & Chạy Nhanh (Quick Start)
 
-
-
-**Cài đặt các gói thư viện cần thiết:**
-
 **Clone repository về máy (Hỗ trợ ổ E hoặc ổ C):**
 
 ```bash
@@ -36,6 +32,8 @@ git clone <URL_REPOSITORY>
 cd AI-Agent-Production
 ```
 
+
+**Cài đặt các gói thư viện cần thiết:**
 
 **Bash**
 
