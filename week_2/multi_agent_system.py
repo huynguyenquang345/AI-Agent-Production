@@ -1,4 +1,7 @@
 import os
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
 from typing import Annotated, TypedDict
 from langchain_ollama import OllamaEmbeddings, ChatOllama
 from langchain_qdrant import QdrantVectorStore
@@ -9,11 +12,13 @@ from langchain_core.messages import SystemMessage, HumanMessage
 from langgraph.graph import StateGraph, START, END
 from langgraph.graph.message import add_messages
 
-# Khởi tạo vector store từ file sample.pdf trong week_1
+# Khởi tạo vector store từ file sample.pdf nằm ở thư mục gốc
 print("Đang khởi tạo hệ thống RAG cho Multi-Agent...")
 embeddings = OllamaEmbeddings(model="nomic-embed-text")
 
-pdf_path = os.path.join("..", "week_1", "sample.pdf")
+# Sửa lại đường dẫn lùi 1 cấp ra thư mục gốc chứa file sample.pdf
+pdf_path = os.path.join("..", "sample.pdf")
+
 if os.path.exists(pdf_path):
     loader = PyPDFLoader(pdf_path)
     docs = loader.load()
@@ -29,7 +34,7 @@ if os.path.exists(pdf_path):
     retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
     print("Đã khởi tạo xong Vector DB.")
 else:
-    print("Cảnh báo: Không tìm thấy file sample.pdf.")
+    print(f"Cảnh báo: Không tìm thấy file sample.pdf tại đường dẫn: {os.path.abspath(pdf_path)}")
     retriever = None
 
 

@@ -14,7 +14,7 @@ from langgraph.prebuilt import ToolNode, tools_condition
 print("Đang khởi tạo hệ thống RAG...")
 embeddings = OllamaEmbeddings(model="nomic-embed-text")
 
-if os.path.exists("sample.pdf"):
+if os.path.exists(os.path.join("..", "sample.pdf")): #pdf file đang nằm ngoài thư mục week_1, cần sửa lại đường dẫn
     loader = PyPDFLoader("sample.pdf")
     docs = loader.load()
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=800, chunk_overlap=150)

@@ -2,7 +2,7 @@ import os
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_ollama import OllamaEmbeddings, ChatOllama
-from langchain_qdrant import QdrantVectorStore  # Import mới từ gói langchain-qdrant
+from langchain_qdrant import QdrantVectorStore 
 from langchain_classic.chains import create_retrieval_chain
 from langchain_classic.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
@@ -34,7 +34,6 @@ class LocalAdvancedRAGPipeline:
         print(f"✅ Đã tạo ra {len(chunks)} chunks.")
 
         print("🧠 Đang tạo Embeddings cục bộ và lưu vào Qdrant Vector DB...")
-        # Sử dụng QdrantVectorStore chuẩn mới thay cho Qdrant cũ
         self.vectorstore = QdrantVectorStore.from_documents(
             documents=chunks,
             embedding=self.embeddings,
@@ -82,11 +81,14 @@ class LocalAdvancedRAGPipeline:
 
 
 if __name__ == "__main__":
-    PDF_FILE = "sample.pdf"
+    # Trỏ đường dẫn lùi ra 1 cấp thư mục (ra thư mục gốc chứa file sample.pdf)
+    PDF_FILE = os.path.join("..", "sample.pdf")
 
     if not os.path.exists(PDF_FILE):
-        print(f"⚠️ Vui lòng bỏ 1 file PDF tên là '{PDF_FILE}' vào thư mục `week_1` để chạy!")
+        print(f"⚠️ Không tìm thấy file tại đường dẫn: {os.path.abspath(PDF_FILE)}. Vui lòng kiểm tra lại vị trí file PDF!")
     else:
+        print(f"📁 Đã tìm thấy file PDF tại: {os.path.abspath(PDF_FILE)}")
+        
         # Khởi tạo & Chạy Pipeline Local
         rag = LocalAdvancedRAGPipeline(pdf_path=PDF_FILE)
         rag.process_and_index_documents()
