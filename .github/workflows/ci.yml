@@ -1,0 +1,36 @@
+name: AI Agent Production CI/CD Pipeline
+
+# Định nghĩa sự kiện kích hoạt: Chạy mỗi khi có lệnh Push hoặc Pull Request lên nhánh main
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Checkout mã nguồn từ repository
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    # 2. Thiết lập môi trường Python
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.10"
+        cache: 'pip'
+
+    # 3. Cài đặt các thư viện phụ thuộc (Dependencies)
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest langchain langchain-core langchain-ollama langchain-qdrant qdrant-client apscheduler langgraph langgraph-checkpoint-sqlite
+
+    # 4. Chạy bộ kiểm thử tự động (Quality Gate)
+    - name: Run Test Suite with Pytest
+      run: |
+        cd week_2
+        pytest -v
