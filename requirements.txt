@@ -1,6 +1,7 @@
 pytest
 langchain
 langchain-core
+langchain-community
 langchain-ollama
 langchain-qdrant
 qdrant-client
