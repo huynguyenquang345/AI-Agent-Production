@@ -1,3 +1,9 @@
-Run actions/setup-python@v5
-Installed versions
-Error: No file in /home/runner/work/AI-Agent-Production/AI-Agent-Production matched to [**/requirements.txt or **/pyproject.toml], make sure you have checked out the target repository
+pytest
+langchain
+langchain-core
+langchain-ollama
+langchain-qdrant
+qdrant-client
+apscheduler
+langgraph
+langgraph-checkpoint-sqlite
