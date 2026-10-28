@@ -27,5 +27,4 @@ jobs:
 
     - name: Run Test Suite with Pytest
       run: |
-        cd week_2
-        pytest -v
+        pytest 
